@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDiChoThue", "WebDiChoThue\WebDiChoThue.csproj", "{FE8F435C-17A5-4CD2-92F6-B8F1E01C6FAA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE8F435C-17A5-4CD2-92F6-B8F1E01C6FAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE8F435C-17A5-4CD2-92F6-B8F1E01C6FAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE8F435C-17A5-4CD2-92F6-B8F1E01C6FAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE8F435C-17A5-4CD2-92F6-B8F1E01C6FAA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {57AF2A44-CB09-4102-902D-DB1E120C7AAF}
+	EndGlobalSection
+EndGlobal
