@@ -158,7 +158,7 @@
                         <a asp-area = "Admin" asp-controller = "AdminAccounts" asp-action =  "Index">Quản lý tài khoản</a>
                     </li>
                     <li>
-                        <a href="basic-table.html">Quản lý danh mục</a>
+                        <a asp-area = "Admin" asp-controller = "AdminCategories" asp-action =  "Index">Quản lý danh mục</a>
                     </li>
                     <li>
                         <a asp-area = "Admin" asp-controller = "AdminRoles" asp-action =  "Index"> Quản lý quyền truy cập</a>
@@ -179,59 +179,20 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="chartist.html">Chartist</a>
+                        <a asp-area="Admin" asp-controller="AdminTinDangs" asp-action="Index">Quản lý tin đăng</a>
                     </li>
                     <li>
                         <a href="chartjs.html">ChartJs</a>
                     </li>
                 </ul>
             </li>
-            <li class="nav-item dropdown">
-                <a class="dropdown-toggle" href="javascript:void(0);">
+            <li class="nav-item">
+                <a class="dropdown-toggle" asp-area = "Admin" asp-controller = "AdminPages" asp-action =  "Index">
                     <span class="icon-holder">
-                        <i class="anticon anticon-file"></i>
+                        <i class="anticon anticon-sliders"></i>
                     </span>
                     <span class="title">Quản lý pages</span>
-                    <span class="arrow">
-                        <i class="arrow-icon"></i>
-                    </span>
                 </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="profile.html">Profile</a>
-                    </li>
-                    <li>
-                        <a href="invoice.html">Invoice</a>
-                    </li>
-                    <li>
-                        <a href="members.html">Members</a>
-                    </li>
-                    <li>
-                        <a href="pricing.html">Pricing</a>
-                    </li>
-                    <li>
-                        <a href="setting.html">Setting</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="javascript:void(0);">
-                            <span>Blog</span>
-                            <span class="arrow">
-                                <i class="arrow-icon"></i>
-                            </span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="blog-grid.html">Blog Grid</a>
-                            </li>
-                            <li>
-                                <a href="blog-list.html">Blog List</a>
-                            </li>
-                            <li>
-                                <a href="blog-post.html">Blog Post</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
             </li>
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">

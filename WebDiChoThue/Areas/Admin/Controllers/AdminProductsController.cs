@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PagedList.Core;
+using WebDiChoThue.Helpper;
 using WebDiChoThue.Models;
 
 namespace WebDiChoThue.Areas.Admin.Controllers
@@ -15,28 +18,58 @@ namespace WebDiChoThue.Areas.Admin.Controllers
     {
         private readonly dbMarketsContext _context;
 
-        public AdminProductsController(dbMarketsContext context)
+        public INotyfService _notifyService { get; }
+
+        public AdminProductsController(dbMarketsContext context, INotyfService notifyService)
         {
             _context = context;
+            _notifyService = notifyService;
         }
 
         // GET: Admin/AdminProducts
-        public IActionResult Index(int? page)
+        public IActionResult Index(int page = 1, int CatID = 0)
         {
-            var pageNumber = page == null || page <= 0 ? 1 : page.Value;
+            var pageNumber = page;
             var pageSize = 20;
-            var lsProducts = _context.Products
-                 .AsNoTracking()
-                 .Include(x => x.Cat)
-                 .OrderByDescending(x => x.ProductId);
-            PagedList<Product> models = new PagedList<Product>(lsProducts, pageNumber, pageSize);
+
+            List<Product> lsProducts = new List<Product>();
+            if (CatID != 0)
+            {
+                lsProducts = _context.Products
+                .AsNoTracking()
+                .Where(x => x.CatId == CatID)
+                .Include(x => x.Cat)
+                .OrderByDescending(x => x.ProductId).ToList();
+            }
+            else
+            {
+                lsProducts = _context.Products
+                .AsNoTracking()
+                .Include(x => x.Cat)
+                .OrderByDescending(x => x.ProductId).ToList();
+            }
+            PagedList<Product> models = new PagedList<Product>(lsProducts.AsQueryable(), pageNumber, pageSize);
+            ViewBag.CurrentCateID = CatID;
             ViewBag.CurrentPage = pageNumber;
+            ViewData["DanhMuc"] = new SelectList(_context.Categories, "CatId", "CatName", CatID);
+
+
             return View(models);
+        } 
+
+        public IActionResult Filtter(int CatID = 0)
+        {
+            var url = $"/Admin/AdminProducts?CatID={CatID}";
+            if (CatID == 0)
+            {
+                url = $"/Admin/AdminProducts";
+            }
+            return Json(new { status = "success", redirectUrl = url });
         }
 
-        // GET: Admin/AdminProducts/Details/5
+            // GET: Admin/AdminProducts/Details/5
         public async Task<IActionResult> Details(int? id)
-        {
+            {
             if (id == null)
             {
                 return NotFound();
@@ -51,12 +84,12 @@ namespace WebDiChoThue.Areas.Admin.Controllers
             }
 
             return View(product);
-        }
+            }
 
         // GET: Admin/AdminProducts/Create
         public IActionResult Create()
         {
-            ViewData["CatId"] = new SelectList(_context.Categories, "CatId", "CatId");
+            ViewData["DanhMuc"] = new SelectList(_context.Categories, "CatId", "CatName");
             return View();
         }
 
@@ -65,15 +98,28 @@ namespace WebDiChoThue.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,ProductName,ShortDesc,Description,CatId,Price,Discount,Thumb,Video,DateCreated,DateModified,BestSellers,HomeFlag,Active,Tags,Title,Alias,MetaDesc,MetaKey,UnitsInStock")] Product product)
+        public async Task<IActionResult> Create([Bind("ProductId,ProductName,ShortDesc,Description,CatId,Price,Discount,Thumb,Video,DateCreated,DateModified,BestSellers,HomeFlag,Active,Tags,Title,Alias,MetaDesc,MetaKey,UnitsInStock")] Product product, Microsoft.AspNetCore.Http.IFormFile fThumb)
         {
             if (ModelState.IsValid)
             {
+                product.ProductName = Utilities.ToTitleCase(product.ProductName);
+                if (fThumb != null)
+                {
+                    string extension = Path.GetExtension(fThumb.FileName);
+                    string image = Utilities.SEOUrl(product.ProductName) + extension;
+                    product.Thumb = await Utilities.UploadFile(fThumb, @"products", image.ToLower());
+                }
+                if (string.IsNullOrEmpty(product.Thumb)) product.Thumb = "default.jpg";
+                product.Alias = Utilities.SEOUrl(product.ProductName);
+                product.DateModified = DateTime.Now;
+                product.DateCreated = DateTime.Now;
+
                 _context.Add(product);
                 await _context.SaveChangesAsync();
+                _notifyService.Success("Thêm sản phẩm thành công");
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CatId"] = new SelectList(_context.Categories, "CatId", "CatId", product.CatId);
+            ViewData["DanhMuc"] = new SelectList(_context.Categories, "CatId", "CatName", product.CatId);
             return View(product);
         }
 
@@ -90,7 +136,7 @@ namespace WebDiChoThue.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["CatId"] = new SelectList(_context.Categories, "CatId", "CatId", product.CatId);
+            ViewData["DanhMuc"] = new SelectList(_context.Categories, "CatId", "CatName", product.CatId);
             return View(product);
         }
 
@@ -99,7 +145,7 @@ namespace WebDiChoThue.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,ShortDesc,Description,CatId,Price,Discount,Thumb,Video,DateCreated,DateModified,BestSellers,HomeFlag,Active,Tags,Title,Alias,MetaDesc,MetaKey,UnitsInStock")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,ShortDesc,Description,CatId,Price,Discount,Thumb,Video,DateCreated,DateModified,BestSellers,HomeFlag,Active,Tags,Title,Alias,MetaDesc,MetaKey,UnitsInStock")] Product product, Microsoft.AspNetCore.Http.IFormFile fThumb)
         {
             if (id != product.ProductId)
             {
@@ -110,8 +156,22 @@ namespace WebDiChoThue.Areas.Admin.Controllers
             {
                 try
                 {
+                    product.ProductName = Utilities.ToTitleCase(product.ProductName);
+                    if (fThumb != null)
+                    {
+                        string extension = Path.GetExtension(fThumb.FileName);
+                        string image = Utilities.SEOUrl(product.ProductName) + extension;
+                        product.Thumb = await Utilities.UploadFile(fThumb, @"products", image.ToLower());
+                    }
+                    if (string.IsNullOrEmpty(product.Thumb)) product.Thumb = "default.jpg";
+                    product.Alias = Utilities.SEOUrl(product.ProductName);
+                    product.DateModified = DateTime.Now;
+
+
+
                     _context.Update(product);
                     await _context.SaveChangesAsync();
+                    _notifyService.Success("Cập nhật sản phẩm thành công");
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -126,7 +186,7 @@ namespace WebDiChoThue.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CatId"] = new SelectList(_context.Categories, "CatId", "CatId", product.CatId);
+            ViewData["DanhMuc"] = new SelectList(_context.Categories, "CatId", "CatName", product.CatId);
             return View(product);
         }
 
@@ -157,6 +217,7 @@ namespace WebDiChoThue.Areas.Admin.Controllers
             var product = await _context.Products.FindAsync(id);
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
+            _notifyService.Success("Xóa sản phẩm thành công");
             return RedirectToAction(nameof(Index));
         }
 

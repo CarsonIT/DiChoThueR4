@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Enlink - Admin Dashboard Template</title>
+    <title> @ViewData["Title"]</title>
+
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="~/Adminassets/images/logo/favicon.png">
@@ -15,6 +16,8 @@
     <!-- Core css -->
     <link href="~/Adminassets/css/app.min.css" rel="stylesheet">
 
+    @await RenderSectionAsync("Style", required: false)
+
 </head>
 
 <body>
@@ -24,14 +27,16 @@
             <div class="header">
                 <div class="logo logo-dark">
                     <a href="/">
-                        <img src="~/Adminassets/images/logo/logo.png" alt="Logo">
-                        <img class="logo-fold" src="~/Adminassets/images/logo/logo-fold.png" alt="Logo">
+                        @*<img src="~/Adminassets/images/logo/logo.png" alt="Logo">*@
+                        <img src="~/assets/images/R4.png" alt="Logo">
+                        @*<img class="logo-fold" src="~/Adminassets/images/logo/logo-fold.png" alt="Logo">*@
                     </a>
                 </div>
                 <div class="logo logo-white">
                     <a href="index.html">
-                        <img src="~/Adminassets/images/logo/logo-white.png" alt="Logo">
-                        <img class="logo-fold" src="~/Adminassets/images/logo/logo-fold-white.png" alt="Logo">
+                        <img src="~/assets/images/R4.png" alt="Logo">
+                        @*<img src="~/Adminassets/images/logo/logo-white.png" alt="Logo">
+                        <img class="logo-fold" src="~/Adminassets/images/logo/logo-fold-white.png" alt="Logo">*@
                     </a>
                 </div>
                 <div class="nav-wrap">
