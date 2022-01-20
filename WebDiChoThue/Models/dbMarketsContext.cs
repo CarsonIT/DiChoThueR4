@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using WebDiChoThue.ModelViews;
 
 #nullable disable
 
@@ -366,5 +367,7 @@ namespace WebDiChoThue.Models
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        public DbSet<WebDiChoThue.ModelViews.RegisterVM> RegisterVM { get; set; }
     }
 }

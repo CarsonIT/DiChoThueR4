@@ -9,7 +9,6 @@ D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiCh
 D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\bin\Debug\net5.0\WebDiChoThue.pdb
 D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\bin\Debug\net5.0\WebDiChoThue.Views.dll
 D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\bin\Debug\net5.0\WebDiChoThue.Views.pdb
-D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\WebDiChoThue.csproj.AssemblyReference.cache
 D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\WebDiChoThue.GeneratedMSBuildEditorConfig.editorconfig
 D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\WebDiChoThue.AssemblyInfoInputs.cache
 D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\WebDiChoThue.AssemblyInfo.cs
@@ -487,3 +486,19 @@ D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiCh
 D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Views\Blog\Details.cshtml.g.cs
 D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Views\Page\Details.cshtml.g.cs
 D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Views\Product\List.cshtml.g.cs
+D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Views\Home\_ListProductPartialView.cshtml.g.cs
+D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Views\Accounts\Dashboard.cshtml.g.cs
+D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Views\Accounts\DangKyTaiKhoan.cshtml.g.cs
+D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Views\Accounts\Login.cshtml.g.cs
+D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Views\Accounts\_DonhangPartialView.cshtml.g.cs
+D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Views\Accounts\_ChangePasswordPartialView.cshtml.g.cs
+D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Views\ShoppingCart\Index.cshtml.g.cs
+D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\WebDiChoThue.csproj.AssemblyReference.cache
+D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Views\Shared\Components\HeaderCart\Default.cshtml.g.cs
+D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Views\Shared\Components\NumberCart\Default.cshtml.g.cs
+D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminOrders\Create.cshtml.g.cs
+D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminOrders\Delete.cshtml.g.cs
+D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminOrders\Details.cshtml.g.cs
+D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminOrders\Edit.cshtml.g.cs
+D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminOrders\Index.cshtml.g.cs
+D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Views\Checkout\Index.cshtml.g.cs
