@@ -502,3 +502,4 @@ D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiCh
 D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminOrders\Edit.cshtml.g.cs
 D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminOrders\Index.cshtml.g.cs
 D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Views\Checkout\Index.cshtml.g.cs
+D:\Học kỳ 1 - Năm 4\PTUD HTTT HD\Đồ án cuối kỳ\WebDiChoThue\WebDiChoThue\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminOrders\ChangeStatus.cshtml.g.cs

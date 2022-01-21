@@ -54,13 +54,20 @@ namespace WebDiChoThue.Areas.Admin.Controllers
                 return NotFound();
             }
 
+
+            var Chitietdonhang = _context.OrderDetails.AsNoTracking()
+                .Include(x=>x.Product)
+                .Where(x => x.OrderId == order.OrderId)
+                .OrderBy(x => x.OrderDetailId)
+                .ToList();
+            ViewBag.ChiTiet = Chitietdonhang;
             return View(order);
         }
 
 
 
 
-        // GET: Admin/AdminOrders/Edit/5
+        // GET: Admin/ChangeStatus
         public async Task<IActionResult> ChangeStatus(int? id)
         {
             if (id == null)
@@ -68,15 +75,74 @@ namespace WebDiChoThue.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var order = await _context.Orders.FindAsync(id);
+            var order = await _context.Orders
+                .AsNoTracking()
+                .Include(x => x.Customer)
+                .FirstOrDefaultAsync(x => x.OrderId == id);
             if (order == null)
             {
                 return NotFound();
             }
 
-            ViewData["TransactStatusId"] = new SelectList(_context.TransactStatuses, "TransactStatusId", "TransactStatusId", order.TransactStatusId);
-            return View(order);
+            ViewData["TrangThai"] = new SelectList(_context.TransactStatuses, "TransactStatusId", "Status", order.TransactStatusId);
+            return PartialView("ChangeStatus", order);
         }
+
+        //post
+        [HttpPost]
+
+        public async Task<IActionResult> ChangeStatus(int id,[Bind("OrderId,CustomerId,OrderDate,ShipDate,TransactStatusId,Deleted,Paid,PaymentDate,TotalMoney,PaymentId,Note,Address,LocationId,District,Ward")] Order order)
+        {
+            if (id != order.OrderId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var donhang = await _context.Orders
+                        .AsNoTracking()
+                        .Include(x=>x.Customer)
+                        .FirstOrDefaultAsync(x => x.OrderId == id);
+
+                    if(donhang!=null)
+                    {
+                        donhang.Paid = order.Paid;
+                        donhang.Deleted = order.Deleted;
+                        donhang.TransactStatusId = order.TransactStatusId;
+                        if(donhang.Paid == true)
+                        {
+                            donhang.PaymentDate = DateTime.Now;
+                        }
+                        if (donhang.TransactStatusId == 5) donhang.Deleted = true;
+                        if (donhang.TransactStatusId == 3) donhang.ShipDate = DateTime.Now;
+
+                    }    
+
+                    _context.Update(donhang);
+                    await _context.SaveChangesAsync();
+                    _notifyService.Success("Cập nhật trạng thái đơn hàng thành công");
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if(!OrderExists(order.OrderId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+
+            ViewData["TrangThai"] = new SelectList(_context.TransactStatuses, "TransactStatusId", "Status", order.TransactStatusId);
+            return PartialView("ChangeStatus", order);
+        }
+
 
 
 
