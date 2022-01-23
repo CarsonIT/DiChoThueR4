@@ -12,12 +12,12 @@ using WebDiChoThue.Models;
 namespace WebDiChoThue.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class AdminOrdersController : Controller
+    public class StoreOrdersController : Controller
     {
         private readonly dbMarketsContext _context;
 
         public INotyfService _notifyService { get; }
-        public AdminOrdersController(dbMarketsContext context, INotyfService notifyService)
+        public StoreOrdersController(dbMarketsContext context, INotyfService notifyService)
         {
             _context = context;
             _notifyService = notifyService;
