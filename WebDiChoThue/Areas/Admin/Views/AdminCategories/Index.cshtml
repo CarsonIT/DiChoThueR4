@@ -4,7 +4,7 @@
 @model PagedList.Core.IPagedList<WebDiChoThue.Models.Category>
 
 @{
-    ViewData["Title"] = "Danh sách Danh mục sản phẩm - Page : " + @ViewBag.CurrentPage;
+    ViewData["Title"] = "Danh mục sản phẩm - Trang : " + @ViewBag.CurrentPage;
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -12,7 +12,7 @@
     <div class="header-sub-title">
         <nav class="breadcrumb breadcrumb-dash">
             <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
-            <span class="breadcrumb-item active">Danh sách Danh mục sản phẩm: page @ViewBag.CurrentPage</span>
+            <span class="breadcrumb-item active">Danh mục sản phẩm: Trang @ViewBag.CurrentPage</span>
         </nav>
     </div>
 </div>
@@ -22,18 +22,16 @@
             <div class="col-lg-8">
             </div>
             <div class="col-lg-4 text-right">
-                <a class="btn btn-primary" asp-controller="AdminCategories" asp-action="Create"> <i class="anticon anticon-plus-circle m-r-5"></i> <span>Add Category</span></a>
+                <a class="btn btn-primary" asp-controller="AdminCategories" asp-action="Create"> <i class="anticon anticon-plus-circle m-r-5"></i> <span>Thêm danh mục</span></a>
             </div>
         </div>
         <div class="table-responsive">
             <table class="table table-hover e-commerce-table">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Tên danh mục</th>
-                        <th>Ordering</th>
                         <th>Trạng thái</th>
-                        <th>#</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,12 +40,8 @@
                         foreach (var item in Model)
                         {
                             <tr>
-                                <td>@item.CatId</td>
                                 <td>
                                     @item.CatName
-                                </td>
-                                <td>
-                                    @item.Ordering
                                 </td>
                                 <td>
                                     @if (item.Published == true)
@@ -66,9 +60,9 @@
                                     }
                                 </td>
                                 <td>
-                                    <a class="btn btn-primary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminCategories" asp-action="Details" asp-route-id="@item.CatId">View</a>
-                                    <a class="btn btn-secondary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminCategories" asp-action="Edit" asp-route-id="@item.CatId">Edit</a>
-                                    <a class="btn btn-success btn-tone m-r-5" asp-area="Admin" asp-controller="AdminCategories" asp-action="Delete" asp-route-id="@item.CatId">Delete</a>
+                                    <a class="btn btn-primary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminCategories" asp-action="Details" asp-route-id="@item.CatId">Xem</a>
+                                    <a class="btn btn-secondary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminCategories" asp-action="Edit" asp-route-id="@item.CatId">Chỉnh sửa</a>
+                                    <a class="btn btn-danger btn-tone m-r-5" asp-area="Admin" asp-controller="AdminCategories" asp-action="Delete" asp-route-id="@item.CatId">Xóa</a>
                                 </td>
                             </tr>
                         }

@@ -25,10 +25,6 @@
             <table class="product-info-table m-t-20">
                 <tbody>
                     <tr>
-                        <td>ID:</td>
-                        <td class="text-dark font-weight-semibold">@Model.ProductId</td>
-                    </tr>
-                    <tr>
                         <td>Tên sản phẩm:</td>
                         <td>@Model.ProductName</td>
                     </tr>
@@ -51,14 +47,14 @@
                             @if (Model.Active)
                             {
                                 <div class="switch m-r-10">
-                                    <input type="checkbox" id="switch-1" checked="">
+                                    <input type="checkbox" id="switch-1" checked="" disabled>
                                     <label for="switch-1"></label>
                                 </div>
                             }
                             else
                             {
                                 <div class="switch m-r-10">
-                                    <input type="checkbox" id="switch-1">
+                                    <input type="checkbox" id="switch-1" disabled>
                                     <label for="switch-1"></label>
                                 </div>
                             }
@@ -71,14 +67,14 @@
                             @if (Model.BestSellers)
                             {
                                 <div class="switch m-r-10">
-                                    <input type="checkbox" id="switch-1" checked="">
+                                    <input type="checkbox" id="switch-1" checked="" disabled>
                                     <label for="switch-1"></label>
                                 </div>
                             }
                             else
                             {
                                 <div class="switch m-r-10">
-                                    <input type="checkbox" id="switch-1">
+                                    <input type="checkbox" id="switch-1" disabled>
                                     <label for="switch-1"></label>
                                 </div>
                             }
@@ -91,14 +87,14 @@
                             @if (Model.HomeFlag)
                             {
                                 <div class="switch m-r-10">
-                                    <input type="checkbox" id="switch-1" checked="">
+                                    <input type="checkbox" id="switch-1" checked="" disabled>
                                     <label for="switch-1"></label>
                                 </div>
                             }
                             else
                             {
                                 <div class="switch m-r-10">
-                                    <input type="checkbox" id="switch-1">
+                                    <input type="checkbox" id="switch-1" disabled>
                                     <label for="switch-1"></label>
                                 </div>
                             }
@@ -141,7 +137,7 @@
                     </tr>
                     <tr>
                         <td>Mô tả sản phẩm:</td>
-                        <td>@Model.Description</td>
+                        <td>@Html.Raw(Model.Description)</td>
                     </tr>
                     <tr>
                         <td>Xác nhận xóa: </td>

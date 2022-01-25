@@ -135,7 +135,7 @@ namespace WebDiChoThue.Areas.Admin.Controllers
                     }
                     if (string.IsNullOrEmpty(page.Thumb)) page.Thumb = "default.jpg";
 
-
+                    page.Alias = Utilities.SEOUrl(page.Title);
                     _context.Update(page);
                     await _context.SaveChangesAsync();
                     _notifyService.Success("Cập nhật thành công");

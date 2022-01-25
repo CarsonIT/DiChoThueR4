@@ -4,7 +4,7 @@
 
 @{
     int CurrentPage = ViewBag.CurrentPage;
-    ViewData["Title"] = "Danh sách sản phẩm " + CurrentPage;
+    ViewData["Title"] = "Danh sách sản phẩm - Trang " + CurrentPage;
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -12,7 +12,7 @@
     <div class="header-sub-title">
         <nav class="breadcrumb breadcrumb-dash">
             <a asp-area="Admin" asp-controller="AdminProducts" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
-            <span class="breadcrumb-item active">Danh sách sản phẩm: page @CurrentPage</span>
+            <span class="breadcrumb-item active">Danh sách sản phẩm: Trang @CurrentPage</span>
         </nav>
     </div>
 </div>
@@ -39,14 +39,13 @@
             </div>
            
             <div class="col-lg-4 text-right">
-                <a class="btn btn-primary" asp-controller="AdminProducts" asp-action="Create"> <i class="anticon anticon-plus-circle m-r-5"></i> <span>Add Product</span></a>
+                <a class="btn btn-primary" asp-controller="AdminProducts" asp-action="Create"> <i class="anticon anticon-plus-circle m-r-5"></i> <span>Thêm sản phẩm</span></a>
             </div>
         </div>
         <div class="table-responsive">
             <table class="table table-hover e-commerce-table">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Tên sản phẩm</th>
                         <th>Danh mục</th>
                         <th>Giá</th>
@@ -61,7 +60,6 @@
                         foreach (var item in Model)
                         {
                             <tr>
-                                <td>@item.ProductId</td>
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <img class="img-fluid rounded" src="assets/images/others/thumb-9.jpg" style="max-width: 60px" alt="">
@@ -76,22 +74,22 @@
                                     {
                                         <div class="d-flex align-items-center">
                                             <div class="badge badge-success badge-dot m-r-10"></div>
-                                            <div>In Stock</div>
+                                            <div>Còn hàng</div>
                                         </div>
                                     }
                                     else
                                     {
                                         <div class="d-flex align-items-center">
                                             <div class="badge badge-success badge-dot m-r-10"></div>
-                                            <div>Out Stock</div>
+                                            <div>Hết hàng</div>
                                         </div>
                                     }
 
                                 </td>
                                 <td>
-                                    <a class="btn btn-primary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminProducts" asp-action="Details" asp-route-id="@item.ProductId">View</a>
-                                    <a class="btn btn-secondary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminProducts" asp-action="Edit" asp-route-id="@item.ProductId">Edit</a>
-                                    <a class="btn btn-success btn-tone m-r-5" asp-area="Admin" asp-controller="AdminProducts" asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+                                    <a class="btn btn-primary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminProducts" asp-action="Details" asp-route-id="@item.ProductId">Xem</a>
+                                    <a class="btn btn-secondary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminProducts" asp-action="Edit" asp-route-id="@item.ProductId">Chỉnh sửa</a>
+                                    <a class="btn btn-danger btn-tone m-r-5" asp-area="Admin" asp-controller="AdminProducts" asp-action="Delete" asp-route-id="@item.ProductId">Xóa</a>
                                 </td>
                             </tr>
                         }
